@@ -1,11 +1,11 @@
 package com.example.health.config.auth;
 
-import com.example.health.entity.User;
+
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
-
+import com.example.health.entity.User;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;

@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        http.authorizeRequests().anyRequest().permitAll()
+        http.authorizeRequests().antMatchers("/exe/**").authenticated()
                 .and().oauth2Login().userInfoEndpoint().userService(principalOauth2UserService);
         http.logout().logoutSuccessUrl("/");
 
