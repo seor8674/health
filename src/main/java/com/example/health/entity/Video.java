@@ -1,6 +1,8 @@
 package com.example.health.entity;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
@@ -9,21 +11,22 @@ import java.util.List;
 
 @Entity
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Video {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "video_id")
     private Long id;
-    private String videoid;
 
-    public Video(String videoid) {
-        videoid = videoid;
+    private String name;
+    private String title;
+
+    public Video(String name,String title) {
+        this.name=name;
+        this.title=title;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
 
 
 }

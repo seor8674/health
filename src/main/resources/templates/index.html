@@ -13,9 +13,10 @@
     <button type="button" class="btn btn-primary" onclick="location.href='/oauth2/authorization/google'">로그인</button>
 </div>
 <div style="text-align: right" th:if="${check}">
-    <span style="color: white" th:text="${name}+'님 환영합니다!'">
-    </span>
+    <div style="color: white" th:text="${name}+'님 환영합니다!'">
+    </div>
     <button type="button" class="btn btn-primary" onclick="location.href='logout'">로그아웃</button>
+    <button type="button" class="btn btn-warning" onclick="location.href='myvideopage'">즐겨찾기</button>
 </div>
 <div style="text-align: center" class="container">
     <div class="row">
@@ -64,6 +65,7 @@
             <div style="color: white; text-align: center; font-size: 25px">스트레칭</div>
         </div>
     </div>
+
 
 </div>
 

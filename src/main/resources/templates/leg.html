@@ -13,15 +13,20 @@
     <button type="button" class="btn btn-primary" onclick="location.href='/oauth2/authorization/google'">로그인</button>
 </div>
 <div style="text-align: right" th:if="${check}">
-    <span style="color: white" th:text="${name}+'님 환영합니다!'">
-    </span>
+    <div style="color: white" th:text="${name}+'님 환영합니다!'">
+    </div>
     <button type="button" class="btn btn-primary" onclick="location.href='logout'">로그아웃</button>
+    <button type="button" class="btn btn-warning" onclick="location.href='/myvideopage'">즐겨찾기</button>
 </div>
 <table style="text-align: center">
     <tr th:each="lists : ${list}">
         <td><iframe width="400" height="250" th:src="|https://www.youtube.com/embed/${lists.getVideoid()}|" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></td>
         <td style="font-size: 30px; color: white" th:text="${lists.getTitle()}"></td>
-        <td><button onclick="">즐겨찾기</button></td>
+        <td><form method="post" action="/myvideo">
+            <input class="btn-warning" type="submit" value="즐겨찾기">
+            <input type="hidden" th:value="${lists.getVideoid()}" name="id">
+
+        </form></td>
     </tr>
 </table>
 

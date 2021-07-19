@@ -4,6 +4,9 @@ import com.example.health.Dto.YoutubeDto;
 import com.example.health.Service.UserService;
 import com.example.health.Service.YoutubeService;
 import com.example.health.config.auth.PrincipalDetails;
+import com.example.health.entity.User;
+import com.example.health.entity.Video;
+import com.example.health.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.w3c.dom.Node;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -147,11 +152,29 @@ public class IndexController {
         return "stretch";
     }
     @PostMapping("/myvideo")
-    public String qwe(@AuthenticationPrincipal PrincipalDetails userDetails,String id){
-        String userid = userDetails.getUser().getUserid();
-        String videoid=id;
-        userService.myvideo(userid,videoid);
+    public String myvideo(@AuthenticationPrincipal PrincipalDetails userDetails,String id){
+        User user = userDetails.getUser();
+        userService.myvideo(user,id);
         return "redirect:/";
+    }
+    @GetMapping("/myvideopage")
+    public String myvideopage(@AuthenticationPrincipal PrincipalDetails userDetails,Model model){
+        try{
+            model.addAttribute("name",userDetails.getUser().getName());
+            model.addAttribute("check",true);
+        }
+        catch (NullPointerException e){
+            model.addAttribute("check",false);
+        }
+        User user = userDetails.getUser();
+        YoutubeDto[] transform = userService.transform(user);
+        model.addAttribute("list",transform);
+        return "mypage";
+    }
+    @PostMapping("/delete")
+    public String delete(@AuthenticationPrincipal PrincipalDetails userDetails,String id) {
+        userService.delete(userDetails.getUser(),id);
+        return "redirect:/myvideopage";
     }
 
 }

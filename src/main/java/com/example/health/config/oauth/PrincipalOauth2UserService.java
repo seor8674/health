@@ -10,6 +10,7 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -24,15 +25,18 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
     @Override
     public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
             OAuth2User oAuth2User=super.loadUser(userRequest);
-            String userid="google_"+oAuth2User.getAttribute("sub");
+            String nickname="google_"+oAuth2User.getAttribute("sub");
             String password=bCryptPasswordEncoder.encode("이환준");
             String email=oAuth2User.getAttribute("email");
             String name=oAuth2User.getAttribute("name");
-
-        User user = userRepository.findByUserid(userid);
-        if(user==null){
-            user=new User(name,userid,password,email);
+            User user;
+            User byuser = userRepository.findByNickname(nickname);
+        if(byuser==null){
+            user=new User(name,nickname,password,email);
             userRepository.save(user);
+        }
+        else{
+            user=byuser;
         }
         return new PrincipalDetails(user,oAuth2User.getAttributes());
     }

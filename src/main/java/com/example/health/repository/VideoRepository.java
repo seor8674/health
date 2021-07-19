@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface VideoRepository extends JpaRepository<Video,Long> {
 
-    public Video findByVideoid(String s);
+    public Video findByName(String name);
 }

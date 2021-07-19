@@ -9,12 +9,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class YoutubeDto {
     private String title;
-    private String thumbnailpath;
     private String videoid;
 
-    public YoutubeDto(String title, String thumbnailpath, String videoid) {
+    public YoutubeDto(String title, String videoid) {
         this.title = title;
-        this.thumbnailpath = thumbnailpath;
         this.videoid = videoid;
     }
 }

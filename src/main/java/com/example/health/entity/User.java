@@ -1,6 +1,7 @@
 package com.example.health.entity;
 
 import com.example.health.Dto.YoutubeDto;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,7 +12,7 @@ import java.util.Vector;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,27 +20,23 @@ public class User {
     private Long id;
 
     private String name;
-    private String userid;
+    private String nickname;
     private String password;
     private String email;
 
-
-
-
     @OneToMany(mappedBy = "user")
-    List<Video> videos=new ArrayList<>();
+    List<VideoItem> videoItemList=new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    List<Board> boardList=new ArrayList<>();
 
-    public User(String name, String userid, String password, String email) {
+    public User(String name, String nickname, String password, String email) {
         this.name = name;
-        this.userid = userid;
+        this.nickname = nickname;
         this.password = password;
         this.email = email;
     }
-
-    public void addvideo(Video video){
-        videos.add(video);
+    public void addvideoitem(VideoItem videoItem){
+        this.videoItemList.add(videoItem);
+        videoItem.setUser(this);
     }
+
 }

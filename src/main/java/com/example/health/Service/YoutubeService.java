@@ -100,12 +100,15 @@ public class YoutubeService {
 
                 SearchResult singleVideo = iterator.next();
                 ResourceId rId = singleVideo.getId();
-                videoRepository.save(new Video(rId.getVideoId()));
-
+                
+                    if(videoRepository.findByName(rId.getVideoId())==null){
+                    videoRepository.save(new Video(rId.getVideoId(),singleVideo.getSnippet().getTitle()));    
+                }    
+                
                 // Double checks the kind is video.
                 if (rId.getKind().equals("youtube#video")) {
                     Thumbnail thumbnail =(Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
-                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId());
+                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),rId.getVideoId());
                 }
                 i++;
             }
@@ -175,12 +178,14 @@ public class YoutubeService {
 
                 SearchResult singleVideo = iterator.next();
                 ResourceId rId = singleVideo.getId();
-                videoRepository.save(new Video(rId.getVideoId()));
+                if(videoRepository.findByName(rId.getVideoId())==null){
+                    videoRepository.save(new Video(rId.getVideoId(),singleVideo.getSnippet().getTitle()));    
+                }
 
                 // Double checks the kind is video.
                 if (rId.getKind().equals("youtube#video")) {
                     Thumbnail thumbnail =(Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
-                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId());
+                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),rId.getVideoId());
                 }
                 i++;
             }
@@ -250,12 +255,14 @@ public class YoutubeService {
 
                 SearchResult singleVideo = iterator.next();
                 ResourceId rId = singleVideo.getId();
-                videoRepository.save(new Video(rId.getVideoId()));
+                if(videoRepository.findByName(rId.getVideoId())==null){
+                    videoRepository.save(new Video(rId.getVideoId(),singleVideo.getSnippet().getTitle()));    
+                }
 
                 // Double checks the kind is video.
                 if (rId.getKind().equals("youtube#video")) {
                     Thumbnail thumbnail =(Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
-                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId());
+                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),rId.getVideoId());
                 }
                 i++;
             }
@@ -325,12 +332,14 @@ public class YoutubeService {
 
                 SearchResult singleVideo = iterator.next();
                 ResourceId rId = singleVideo.getId();
-                videoRepository.save(new Video(rId.getVideoId()));
+                if(videoRepository.findByName(rId.getVideoId())==null){
+                    videoRepository.save(new Video(rId.getVideoId(),singleVideo.getSnippet().getTitle()));    
+                }
 
                 // Double checks the kind is video.
                 if (rId.getKind().equals("youtube#video")) {
                     Thumbnail thumbnail =(Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
-                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId());
+                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),rId.getVideoId());
                 }
                 i++;
             }
@@ -400,12 +409,14 @@ public class YoutubeService {
 
                 SearchResult singleVideo = iterator.next();
                 ResourceId rId = singleVideo.getId();
-                videoRepository.save(new Video(rId.getVideoId()));
+                if(videoRepository.findByName(rId.getVideoId())==null){
+                    videoRepository.save(new Video(rId.getVideoId(),singleVideo.getSnippet().getTitle()));    
+                }
 
                 // Double checks the kind is video.
                 if (rId.getKind().equals("youtube#video")) {
                     Thumbnail thumbnail =(Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
-                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId());
+                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),rId.getVideoId());
                 }
                 i++;
             }
@@ -476,12 +487,14 @@ public class YoutubeService {
 
                 SearchResult singleVideo = iterator.next();
                 ResourceId rId = singleVideo.getId();
-                videoRepository.save(new Video(rId.getVideoId()));
+                if(videoRepository.findByName(rId.getVideoId())==null){
+                    videoRepository.save(new Video(rId.getVideoId(),singleVideo.getSnippet().getTitle()));    
+                }
 
                 // Double checks the kind is video.
                 if (rId.getKind().equals("youtube#video")) {
                     Thumbnail thumbnail =(Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
-                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId());
+                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),rId.getVideoId());
                 }
                 i++;
             }
@@ -551,12 +564,14 @@ public class YoutubeService {
 
                 SearchResult singleVideo = iterator.next();
                 ResourceId rId = singleVideo.getId();
-                videoRepository.save(new Video(rId.getVideoId()));
+                if(videoRepository.findByName(rId.getVideoId())==null){
+                    videoRepository.save(new Video(rId.getVideoId(),singleVideo.getSnippet().getTitle()));    
+                }
 
                 // Double checks the kind is video.
                 if (rId.getKind().equals("youtube#video")) {
                     Thumbnail thumbnail =(Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
-                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId());
+                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),rId.getVideoId());
                 }
                 i++;
             }
@@ -626,12 +641,14 @@ public class YoutubeService {
 
                 SearchResult singleVideo = iterator.next();
                 ResourceId rId = singleVideo.getId();
-                videoRepository.save(new Video(rId.getVideoId()));
+                if(videoRepository.findByName(rId.getVideoId())==null){
+                    videoRepository.save(new Video(rId.getVideoId(),singleVideo.getSnippet().getTitle()));    
+                }
 
                 // Double checks the kind is video.
                 if (rId.getKind().equals("youtube#video")) {
                     Thumbnail thumbnail =(Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
-                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId());
+                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),rId.getVideoId());
                 }
                 i++;
             }
@@ -701,12 +718,14 @@ public class YoutubeService {
 
                 SearchResult singleVideo = iterator.next();
                 ResourceId rId = singleVideo.getId();
-                videoRepository.save(new Video(rId.getVideoId()));
+                if(videoRepository.findByName(rId.getVideoId())==null){
+                    videoRepository.save(new Video(rId.getVideoId(),singleVideo.getSnippet().getTitle()));    
+                }
 
                 // Double checks the kind is video.
                 if (rId.getKind().equals("youtube#video")) {
                     Thumbnail thumbnail =(Thumbnail) singleVideo.getSnippet().getThumbnails().get("default");
-                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),thumbnail.getUrl(),rId.getVideoId());
+                    arr[i]=new YoutubeDto(singleVideo.getSnippet().getTitle(),rId.getVideoId());
                 }
                 i++;
             }
