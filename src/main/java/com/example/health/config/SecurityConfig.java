@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/exe/**").authenticated()
                 .and().oauth2Login().userInfoEndpoint().userService(principalOauth2UserService);
-        http.logout().logoutSuccessUrl("/");
+                http.logout().logoutSuccessUrl("/");
 
     }
 }
