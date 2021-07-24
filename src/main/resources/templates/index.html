@@ -10,7 +10,8 @@
 <br><br>
 <a href="/" style="text-align: center; color:red; font-style: italic; font-weight: bold; font-size: 60px" ><div>헬키피디아</div></a>
 <div style="text-align: right" th:if="${!check}">
-    <button type="button" class="btn btn-primary" onclick="location.href='/oauth2/authorization/google'">로그인</button>
+    <button type="button" class="btn btn-primary" onclick="location.href='/oauth2/authorization/google'">구글 로그인</button>
+    <button type="button" class="btn btn-success active" onclick="location.href='/oauth2/authorization/naver'">네이버 로그인</button>
 </div>
 <div style="text-align: right" th:if="${check}">
     <div style="color: white" th:text="${name}+'님 환영합니다!'">
