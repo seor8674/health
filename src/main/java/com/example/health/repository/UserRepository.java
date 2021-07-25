@@ -11,4 +11,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
     public User findByNicknamefetch(@Param("nickname") String nickname);
 
 
+    @Query("select u from User u join fetch u.videoItemList where u.id=:id")
+    public User findByIdfetch(@Param("id") Long id);
 }
